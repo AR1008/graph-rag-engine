@@ -1,0 +1,11 @@
+# 2. Dockerfile.ingestion (project root) — same idea, but for background_ingestion.py. Same FROM/WORKDIR/COPY/RUN pip install structure, but: no EXPOSE needed (it's not a web server), and the CMD should run python3 src/background_ingestion.py instead.
+
+
+FROM python:3.12-slim
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN python3 -m spacy download en_core_web_sm
+COPY . .
+CMD ["python3", "src/background_ingestion.py"]
