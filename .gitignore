@@ -2,8 +2,8 @@ venv/
 __pycache__/
 *.pyc
 .env
-data/chroma/
-data/entity_cache.json
-data/seen_articles.json
-*.egg-info/
+data/
+src/ingestion/entity_cache.json
+src/seen_articles.json
 .DS_Store
+*.egg-info/
